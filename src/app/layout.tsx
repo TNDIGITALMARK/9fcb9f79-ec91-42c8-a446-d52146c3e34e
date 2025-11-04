@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { QueryProvider } from "@/components/query-provider";
@@ -7,20 +6,13 @@ import { ZyloProvider } from "@/lib/zylo/provider";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { Navbar } from "@/components/layout/navbar";
+import { Footer } from "@/components/layout/footer";
 
 export const metadata: Metadata = {
-  title: "Elegant Flora Boutique",
-  description: "Beautiful AI-powered website creation platform",
+  title: "GlamPass - Beleza por Assinatura",
+  description: "Planos mensais de beleza que conectam você aos melhores salões. Economia, praticidade e qualidade garantida.",
+  keywords: "beleza, assinatura, salões, spa, estética, cabelo, unhas, maquiagem",
 };
 
 export default function RootLayout({
@@ -29,13 +21,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="pt-BR" suppressHydrationWarning>
       <head>
-
+        <link rel="icon" href="/favicon.ico" />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className="antialiased">
         <QueryProvider>
           <ZyloProvider>
             <ThemeProvider
@@ -45,7 +35,9 @@ export default function RootLayout({
               disableTransitionOnChange
             >
               <TooltipProvider>
-                {children}
+                <Navbar />
+                <main>{children}</main>
+                <Footer />
                 <Toaster />
                 <Sonner />
               </TooltipProvider>

@@ -1,59 +1,86 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap');
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* ============================================
+   GLAMPASS DESIGN SYSTEM
+   Colors: Purple primary, White backgrounds, Gold accents
+   Typography: Inter for body, Playfair Display for headings
+   ============================================ */
 
 :root {
-  /* Pure white background with crisp black text */
-  --background: 0 0% 100%;
-  --foreground: 0 0% 0%;
+  /* Font System */
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-mono: 'Menlo', 'Monaco', 'Courier New', monospace;
 
-  /* Clean white cards with black text */
-  --card: 0 0% 100%;
-  --card-foreground: 0 0% 0%;
+  /* GlamPass Color Palette */
+  /* Purple - Primary brand color */
+  --glampass-purple: 280 70% 45%;        /* Deep purple #6B2CB8 */
+  --glampass-purple-light: 280 65% 55%;  /* Light purple #8A4ACF */
+  --glampass-purple-dark: 280 75% 35%;   /* Dark purple #5A1FA0 */
 
-  /* Popovers with white background */
-  --popover: 0 0% 100%;
-  --popover-foreground: 0 0% 0%;
+  /* Gold - Premium accent color */
+  --glampass-gold: 45 95% 55%;           /* Rich gold #F4C542 */
+  --glampass-gold-light: 45 90% 65%;     /* Light gold #F7D668 */
+  --glampass-gold-dark: 45 100% 45%;     /* Dark gold #E6B424 */
 
-  /* Primary: Black with white text */
-  --primary: 0 0% 0%;
-  --primary-foreground: 0 0% 100%;
+  /* Neutral palette */
+  --glampass-white: 0 0% 100%;           /* Pure white */
+  --glampass-gray-50: 280 20% 98%;       /* Very light purple-tinted gray */
+  --glampass-gray-100: 280 15% 95%;      /* Light gray with purple tint */
+  --glampass-gray-200: 280 10% 85%;      /* Medium-light gray */
+  --glampass-gray-600: 280 5% 40%;       /* Medium-dark gray */
+  --glampass-gray-900: 280 10% 10%;      /* Very dark gray */
 
-  /* Secondary: Light gray background with black text */
-  --secondary: 0 0% 97%;
-  --secondary-foreground: 0 0% 0%;
+  /* Application colors */
+  --background: var(--glampass-white);
+  --foreground: var(--glampass-gray-900);
 
-  /* Muted: Subtle gray with darker text */
-  --muted: 0 0% 96%;
-  --muted-foreground: 0 0% 40%;
+  /* Cards: White with subtle shadow */
+  --card: var(--glampass-white);
+  --card-foreground: var(--glampass-gray-900);
 
-  /* Accent: Light gray */
-  --accent: 0 0% 96%;
-  --accent-foreground: 0 0% 0%;
+  /* Popovers */
+  --popover: var(--glampass-white);
+  --popover-foreground: var(--glampass-gray-900);
 
-  /* Destructive: Clean red */
+  /* Primary: Deep purple */
+  --primary: var(--glampass-purple);
+  --primary-foreground: var(--glampass-white);
+
+  /* Secondary: Light purple tint */
+  --secondary: var(--glampass-gray-100);
+  --secondary-foreground: var(--glampass-purple-dark);
+
+  /* Muted: Subtle gray */
+  --muted: var(--glampass-gray-50);
+  --muted-foreground: var(--glampass-gray-600);
+
+  /* Accent: Gold for premium features */
+  --accent: var(--glampass-gold);
+  --accent-foreground: var(--glampass-purple-dark);
+
+  /* Destructive: Red for errors */
   --destructive: 0 70% 50%;
-  --destructive-foreground: 0 0% 100%;
+  --destructive-foreground: var(--glampass-white);
 
-  /* Borders: Subtle gray */
-  --border: 0 0% 90%;
-  --input: 0 0% 90%;
-  --ring: 0 0% 0%;
+  /* Borders: Subtle gray with purple tint */
+  --border: var(--glampass-gray-200);
+  --input: var(--glampass-gray-200);
+  --ring: var(--glampass-purple);
 
-  /* Minimal rounded corners */
-  --radius: 0.375rem;
+  /* Rounded corners for premium feel */
+  --radius: 0.75rem;
 
-  /* Sidebar: Clean white with black text */
-  --sidebar-background: 0 0% 100%;
-  --sidebar-foreground: 0 0% 0%;
-  --sidebar-primary: 0 0% 0%;
-  --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 0 0% 96%;
-  --sidebar-accent-foreground: 0 0% 0%;
-  --sidebar-border: 0 0% 90%;
-  --sidebar-ring: 0 0% 0%;
+  /* Sidebar */
+  --sidebar-background: var(--glampass-purple);
+  --sidebar-foreground: var(--glampass-white);
+  --sidebar-primary: var(--glampass-gold);
+  --sidebar-primary-foreground: var(--glampass-purple-dark);
+  --sidebar-accent: var(--glampass-purple-light);
+  --sidebar-accent-foreground: var(--glampass-white);
+  --sidebar-border: var(--glampass-purple-dark);
+  --sidebar-ring: var(--glampass-gold);
 }
 
 .dark {
@@ -168,36 +195,239 @@ All colors MUST be HSL.
   border-color: hsl(var(--border));
 }
 
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
 body {
+  margin: 0;
+  padding: 0;
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  line-height: 1.6;
   font-feature-settings: "rlig" 1, "calt" 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
 
-/* Minimal, clean typography */
+/* ============================================
+   TYPOGRAPHY SYSTEM
+   ============================================ */
+
+/* Headings use Playfair Display for elegance */
 h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: hsl(var(--glampass-purple-dark));
+  margin-top: 0;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+}
+
+h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+h4 {
+  font-size: 1.5rem;
   font-weight: 600;
-  letter-spacing: -0.025em;
-  color: hsl(var(--foreground));
+  margin-bottom: 0.875rem;
 }
 
-/* Clean button styles */
+h5 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+h6 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+/* Body text */
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  line-height: 1.7;
+}
+
+/* Links with purple hover */
+a {
+  color: hsl(var(--glampass-purple));
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: hsl(var(--glampass-purple-light));
+}
+
+/* Strong and emphasis */
+strong, b {
+  font-weight: 600;
+  color: hsl(var(--glampass-purple-dark));
+}
+
+em, i {
+  font-style: italic;
+}
+
+/* ============================================
+   BUTTON STYLES
+   ============================================ */
+
 button {
-  font-weight: 500;
+  font-family: var(--font-primary);
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
 }
 
-/* Subtle shadows for depth */
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ============================================
+   FORM ELEMENTS
+   ============================================ */
+
+input, select, textarea {
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: hsl(var(--foreground));
+  background-color: hsl(var(--background));
+  border: 2px solid hsl(var(--border));
+  border-radius: var(--radius);
+  padding: 0.625rem 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: hsl(var(--glampass-purple));
+  box-shadow: 0 0 0 3px hsl(var(--glampass-purple) / 0.1);
+}
+
+input::placeholder, textarea::placeholder {
+  color: hsl(var(--muted-foreground));
+}
+
+label {
+  font-weight: 500;
+  color: hsl(var(--glampass-gray-900));
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+/* ============================================
+   SHADOWS FOR DEPTH
+   ============================================ */
+
 .shadow-sm {
   box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
 }
 
 .shadow {
-  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 0.08), 0 1px 2px -1px rgb(0 0 0 / 0.06);
 }
 
 .shadow-md {
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.08);
+}
+
+.shadow-lg {
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.08);
+}
+
+.shadow-xl {
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.08);
+}
+
+/* Gold glow for premium elements */
+.shadow-gold {
+  box-shadow: 0 4px 20px 0 hsl(var(--glampass-gold) / 0.3);
+}
+
+/* Purple glow for hover states */
+.shadow-purple {
+  box-shadow: 0 4px 20px 0 hsl(var(--glampass-purple) / 0.25);
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+/* Purple gradient backgrounds */
+.bg-gradient-purple {
+  background: linear-gradient(135deg, hsl(var(--glampass-purple)) 0%, hsl(var(--glampass-purple-dark)) 100%);
+}
+
+.bg-gradient-purple-light {
+  background: linear-gradient(135deg, hsl(var(--glampass-purple-light)) 0%, hsl(var(--glampass-purple)) 100%);
+}
+
+/* Gold accent borders */
+.border-gold {
+  border: 2px solid hsl(var(--glampass-gold));
+}
+
+.border-gold-light {
+  border: 2px solid hsl(var(--glampass-gold-light));
+}
+
+/* Text colors */
+.text-purple {
+  color: hsl(var(--glampass-purple));
+}
+
+.text-purple-dark {
+  color: hsl(var(--glampass-purple-dark));
+}
+
+.text-gold {
+  color: hsl(var(--glampass-gold));
+}
+
+/* Premium badge styling */
+.premium-badge {
+  background: linear-gradient(135deg, hsl(var(--glampass-gold)) 0%, hsl(var(--glampass-gold-dark)) 100%);
+  color: hsl(var(--glampass-purple-dark));
+  font-weight: 700;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
