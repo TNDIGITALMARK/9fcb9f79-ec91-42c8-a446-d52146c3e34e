@@ -13,24 +13,26 @@
   --font-heading: 'Playfair Display', Georgia, serif;
   --font-mono: 'Menlo', 'Monaco', 'Courier New', monospace;
 
-  /* GlamPass Color Palette */
-  /* Purple - Primary brand color */
-  --glampass-purple: 280 70% 45%;        /* Deep purple #6B2CB8 */
-  --glampass-purple-light: 280 65% 55%;  /* Light purple #8A4ACF */
-  --glampass-purple-dark: 280 75% 35%;   /* Dark purple #5A1FA0 */
+  /* GlamPass Color Palette - Light Purple & White Dominant */
+  /* Purple - Light and airy primary color */
+  --glampass-purple: 270 45% 65%;        /* Light purple #A78FD9 */
+  --glampass-purple-lighter: 270 40% 75%; /* Very light purple #C2B3E5 */
+  --glampass-purple-medium: 270 50% 55%;  /* Medium purple #9372D0 */
+  --glampass-purple-text: 270 60% 40%;    /* Darker text purple for readability #6B4B9E */
 
-  /* Gold - Premium accent color */
-  --glampass-gold: 45 95% 55%;           /* Rich gold #F4C542 */
-  --glampass-gold-light: 45 90% 65%;     /* Light gold #F7D668 */
-  --glampass-gold-dark: 45 100% 45%;     /* Dark gold #E6B424 */
+  /* Gold - Accent only, used sparingly */
+  --glampass-gold: 45 90% 55%;           /* Rich gold #F4C542 */
+  --glampass-gold-light: 45 85% 65%;     /* Light gold #F7D668 */
+  --glampass-gold-dark: 45 95% 50%;      /* Dark gold #E6B424 */
 
-  /* Neutral palette */
+  /* Neutral palette - White dominant with excellent contrast */
   --glampass-white: 0 0% 100%;           /* Pure white */
-  --glampass-gray-50: 280 20% 98%;       /* Very light purple-tinted gray */
-  --glampass-gray-100: 280 15% 95%;      /* Light gray with purple tint */
-  --glampass-gray-200: 280 10% 85%;      /* Medium-light gray */
-  --glampass-gray-600: 280 5% 40%;       /* Medium-dark gray */
-  --glampass-gray-900: 280 10% 10%;      /* Very dark gray */
+  --glampass-off-white: 270 20% 98%;     /* Very subtle purple-tinted white */
+  --glampass-gray-50: 270 15% 97%;       /* Almost white with purple tint */
+  --glampass-gray-100: 270 10% 93%;      /* Very light gray */
+  --glampass-gray-200: 270 8% 87%;       /* Light gray for borders */
+  --glampass-gray-600: 270 5% 45%;       /* Medium gray for text */
+  --glampass-gray-900: 270 10% 20%;      /* Dark gray for headings */
 
   /* Application colors */
   --background: var(--glampass-white);
@@ -44,21 +46,21 @@
   --popover: var(--glampass-white);
   --popover-foreground: var(--glampass-gray-900);
 
-  /* Primary: Deep purple */
+  /* Primary: Light purple */
   --primary: var(--glampass-purple);
   --primary-foreground: var(--glampass-white);
 
-  /* Secondary: Light purple tint */
-  --secondary: var(--glampass-gray-100);
-  --secondary-foreground: var(--glampass-purple-dark);
+  /* Secondary: Very light purple */
+  --secondary: var(--glampass-purple-lighter);
+  --secondary-foreground: var(--glampass-purple-text);
 
   /* Muted: Subtle gray */
   --muted: var(--glampass-gray-50);
   --muted-foreground: var(--glampass-gray-600);
 
-  /* Accent: Gold for premium features */
+  /* Accent: Gold for premium features (used sparingly) */
   --accent: var(--glampass-gold);
-  --accent-foreground: var(--glampass-purple-dark);
+  --accent-foreground: var(--glampass-purple-text);
 
   /* Destructive: Red for errors */
   --destructive: 0 70% 50%;
@@ -72,14 +74,14 @@
   /* Rounded corners for premium feel */
   --radius: 0.75rem;
 
-  /* Sidebar */
+  /* Sidebar - Light purple theme */
   --sidebar-background: var(--glampass-purple);
   --sidebar-foreground: var(--glampass-white);
   --sidebar-primary: var(--glampass-gold);
-  --sidebar-primary-foreground: var(--glampass-purple-dark);
-  --sidebar-accent: var(--glampass-purple-light);
+  --sidebar-primary-foreground: var(--glampass-purple-text);
+  --sidebar-accent: var(--glampass-purple-medium);
   --sidebar-accent-foreground: var(--glampass-white);
-  --sidebar-border: var(--glampass-purple-dark);
+  --sidebar-border: var(--glampass-purple-medium);
   --sidebar-ring: var(--glampass-gold);
 }
 
@@ -232,7 +234,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   font-weight: 700;
   letter-spacing: -0.02em;
-  color: hsl(var(--glampass-purple-dark));
+  color: hsl(var(--glampass-purple-text));
   margin-top: 0;
   line-height: 1.2;
 }
@@ -294,7 +296,7 @@ a:hover {
 /* Strong and emphasis */
 strong, b {
   font-weight: 600;
-  color: hsl(var(--glampass-purple-dark));
+  color: hsl(var(--glampass-purple-text));
 }
 
 em, i {
@@ -389,13 +391,13 @@ label {
    UTILITY CLASSES
    ============================================ */
 
-/* Purple gradient backgrounds */
+/* Purple gradient backgrounds - Light and airy */
 .bg-gradient-purple {
-  background: linear-gradient(135deg, hsl(var(--glampass-purple)) 0%, hsl(var(--glampass-purple-dark)) 100%);
+  background: linear-gradient(135deg, hsl(var(--glampass-purple)) 0%, hsl(var(--glampass-purple-medium)) 100%);
 }
 
 .bg-gradient-purple-light {
-  background: linear-gradient(135deg, hsl(var(--glampass-purple-light)) 0%, hsl(var(--glampass-purple)) 100%);
+  background: linear-gradient(135deg, hsl(var(--glampass-purple-lighter)) 0%, hsl(var(--glampass-purple)) 100%);
 }
 
 /* Gold accent borders */
@@ -412,18 +414,22 @@ label {
   color: hsl(var(--glampass-purple));
 }
 
-.text-purple-dark {
-  color: hsl(var(--glampass-purple-dark));
+.text-purple-medium {
+  color: hsl(var(--glampass-purple-medium));
+}
+
+.text-purple-text {
+  color: hsl(var(--glampass-purple-text));
 }
 
 .text-gold {
   color: hsl(var(--glampass-gold));
 }
 
-/* Premium badge styling */
+/* Premium badge styling - Gold accent only */
 .premium-badge {
   background: linear-gradient(135deg, hsl(var(--glampass-gold)) 0%, hsl(var(--glampass-gold-dark)) 100%);
-  color: hsl(var(--glampass-purple-dark));
+  color: hsl(var(--glampass-purple-text));
   font-weight: 700;
   padding: 0.25rem 0.75rem;
   border-radius: 9999px;

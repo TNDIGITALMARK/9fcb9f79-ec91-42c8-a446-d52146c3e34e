@@ -15,7 +15,7 @@ export function PlanCard({ plan }: PlanCardProps) {
         relative bg-white rounded-2xl p-8 shadow-lg
         transition-all duration-300 hover:shadow-xl hover:-translate-y-2
         border-2
-        ${plan.isPremium ? 'border-gold shadow-gold' : 'border-purple/20'}
+        ${plan.isPremium ? 'border-gold shadow-gold' : 'border-purple-lighter/60'}
         ${plan.isPopular ? 'ring-2 ring-purple ring-offset-4' : ''}
       `}
     >
@@ -40,10 +40,10 @@ export function PlanCard({ plan }: PlanCardProps) {
 
       {/* Plan Header */}
       <div className="text-center mb-6">
-        <h3 className="text-2xl font-heading font-bold text-purple-dark mb-2">
+        <h3 className="text-2xl font-heading font-bold text-purple-text mb-2">
           {plan.name}
         </h3>
-        <p className="text-muted-foreground text-sm mb-4">
+        <p className="text-gray-600 text-sm mb-4">
           {plan.description}
         </p>
 
@@ -53,7 +53,7 @@ export function PlanCard({ plan }: PlanCardProps) {
             <span className="text-4xl font-heading font-bold text-gold">
               R$ {plan.price.toFixed(2).replace('.', ',')}
             </span>
-            <span className="text-muted-foreground ml-2">/mês</span>
+            <span className="text-gray-600 ml-2">/mês</span>
           </div>
         </div>
       </div>
@@ -64,11 +64,11 @@ export function PlanCard({ plan }: PlanCardProps) {
           <li key={index} className="flex items-start gap-3">
             <div className={`
               flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center mt-0.5
-              ${plan.isPremium ? 'bg-gold/20' : 'bg-purple/20'}
+              ${plan.isPremium ? 'bg-gold/20' : 'bg-purple-lighter/40'}
             `}>
-              <Check className={`w-3.5 h-3.5 ${plan.isPremium ? 'text-gold' : 'text-purple'}`} />
+              <Check className={`w-3.5 h-3.5 ${plan.isPremium ? 'text-gold' : 'text-purple-medium'}`} />
             </div>
-            <span className="text-sm text-foreground leading-relaxed">
+            <span className="text-sm text-gray-700 leading-relaxed">
               {feature}
             </span>
           </li>
@@ -80,7 +80,7 @@ export function PlanCard({ plan }: PlanCardProps) {
         href={`/pagamento?plan=${plan.id}`}
         className={`
           block w-full py-3.5 rounded-lg font-semibold text-center
-          transition-all duration-200
+          transition-all duration-200 hover:scale-105
           ${plan.isPremium
             ? 'bg-gradient-purple text-white hover:shadow-purple'
             : 'bg-gradient-purple text-white hover:shadow-purple'
@@ -91,7 +91,7 @@ export function PlanCard({ plan }: PlanCardProps) {
       </Link>
 
       {/* Salon Info */}
-      <p className="text-xs text-center text-muted-foreground mt-4">
+      <p className="text-xs text-center text-gray-500 mt-4">
         Válido em salões parceiros • Cheia de Charme
       </p>
     </div>
