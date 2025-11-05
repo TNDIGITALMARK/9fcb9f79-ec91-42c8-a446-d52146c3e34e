@@ -78,14 +78,7 @@ export function PlanCard({ plan }: PlanCardProps) {
       {/* CTA Button */}
       <Link
         href={`/pagamento?plan=${plan.id}`}
-        className={`
-          block w-full py-3.5 rounded-lg font-semibold text-center
-          transition-all duration-200 hover:scale-105
-          ${plan.isPremium
-            ? 'bg-gradient-purple text-white hover:shadow-purple'
-            : 'bg-gradient-purple text-white hover:shadow-purple'
-          }
-        `}
+        className="block w-full py-3.5 rounded-lg font-bold text-center text-white bg-gradient-purple hover:shadow-purple transition-all duration-200 hover:scale-105"
       >
         Assinar Agora
       </Link>
