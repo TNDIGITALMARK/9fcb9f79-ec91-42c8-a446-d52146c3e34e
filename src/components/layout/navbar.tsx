@@ -12,6 +12,7 @@ export function Navbar() {
     { href: '/', label: 'Início' },
     { href: '/#planos', label: 'Planos' },
     { href: '/saloes', label: 'Salões Perto de Mim' },
+    { href: '/glam-help', label: 'Glam Help' },
     { href: '/agendamento', label: 'Agendamento' },
     { href: '/avaliacoes', label: 'Avaliações' },
     { href: '/quem-somos', label: 'Quem Somos' },

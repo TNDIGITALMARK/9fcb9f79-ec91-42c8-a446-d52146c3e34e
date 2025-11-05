@@ -37,6 +37,31 @@ export interface TimeSlot {
   salonId: string;
 }
 
+export interface GlamHelpService {
+  id: string;
+  name: string;
+  duration: string;
+  estimatedPrice: string;
+  description: string;
+  icon: string;
+}
+
+export interface GlamHelpProfessional {
+  id: string;
+  name: string;
+  rating: number;
+  reviewCount: number;
+  distance: string;
+  distanceValue: number; // for sorting
+  profileImage?: string;
+  specialties: string[];
+  isOnline: boolean;
+  responseTime: string;
+  completedServices: number;
+  bio: string;
+  availableServices: string[];
+}
+
 // Subscription Plans - Cheia de Charme
 export const subscriptionPlans: SubscriptionPlan[] = [
   {
@@ -213,6 +238,158 @@ export const generateTimeSlots = (salonId: string, date: Date): TimeSlot[] => {
 
   return slots;
 };
+
+// Glam Help Services - Quick at-home services
+export const glamHelpServices: GlamHelpService[] = [
+  {
+    id: 'escova',
+    name: 'Escova',
+    duration: '45 min',
+    estimatedPrice: 'R$ 80 - 120',
+    description: 'Escova profissional no conforto da sua casa',
+    icon: '💇‍♀️',
+  },
+  {
+    id: 'esmaltacao',
+    name: 'Esmaltação',
+    duration: '30 min',
+    estimatedPrice: 'R$ 50 - 80',
+    description: 'Esmaltação de mãos e/ou pés com produtos de qualidade',
+    icon: '💅',
+  },
+  {
+    id: 'maquiagem',
+    name: 'Maquiagem',
+    duration: '60 min',
+    estimatedPrice: 'R$ 120 - 200',
+    description: 'Maquiagem profissional para qualquer ocasião',
+    icon: '💄',
+  },
+];
+
+// Glam Help Professionals - Available for immediate booking
+export const glamHelpProfessionals: GlamHelpProfessional[] = [
+  {
+    id: 'prof-1',
+    name: 'Camila Santos',
+    rating: 4.9,
+    reviewCount: 127,
+    distance: '0.5 km',
+    distanceValue: 0.5,
+    profileImage: '/professionals/camila.jpg',
+    specialties: ['Escova', 'Maquiagem'],
+    isOnline: true,
+    responseTime: 'Responde em ~5 min',
+    completedServices: 342,
+    bio: 'Especialista em escovas e maquiagem para eventos. 8 anos de experiência.',
+    availableServices: ['escova', 'maquiagem'],
+  },
+  {
+    id: 'prof-2',
+    name: 'Patricia Oliveira',
+    rating: 5.0,
+    reviewCount: 93,
+    distance: '0.8 km',
+    distanceValue: 0.8,
+    profileImage: '/professionals/patricia.jpg',
+    specialties: ['Esmaltação', 'Unha em gel'],
+    isOnline: true,
+    responseTime: 'Responde em ~3 min',
+    completedServices: 289,
+    bio: 'Designer de unhas certificada. Especialista em esmaltação e nail art.',
+    availableServices: ['esmaltacao'],
+  },
+  {
+    id: 'prof-3',
+    name: 'Juliana Costa',
+    rating: 4.8,
+    reviewCount: 156,
+    distance: '1.2 km',
+    distanceValue: 1.2,
+    profileImage: '/professionals/juliana.jpg',
+    specialties: ['Escova', 'Esmaltação', 'Maquiagem'],
+    isOnline: true,
+    responseTime: 'Responde em ~8 min',
+    completedServices: 421,
+    bio: 'Profissional completa com experiência em todos os serviços express.',
+    availableServices: ['escova', 'esmaltacao', 'maquiagem'],
+  },
+  {
+    id: 'prof-4',
+    name: 'Mariana Lima',
+    rating: 4.9,
+    reviewCount: 84,
+    distance: '1.5 km',
+    distanceValue: 1.5,
+    profileImage: '/professionals/mariana.jpg',
+    specialties: ['Maquiagem', 'Maquiagem de noiva'],
+    isOnline: true,
+    responseTime: 'Responde em ~10 min',
+    completedServices: 198,
+    bio: 'Maquiadora profissional especializada em eventos e festas.',
+    availableServices: ['maquiagem'],
+  },
+  {
+    id: 'prof-5',
+    name: 'Fernanda Alves',
+    rating: 4.7,
+    reviewCount: 112,
+    distance: '1.8 km',
+    distanceValue: 1.8,
+    profileImage: '/professionals/fernanda.jpg',
+    specialties: ['Escova', 'Hidratação'],
+    isOnline: true,
+    responseTime: 'Responde em ~7 min',
+    completedServices: 267,
+    bio: 'Hair stylist com foco em escovas e tratamentos capilares.',
+    availableServices: ['escova'],
+  },
+  {
+    id: 'prof-6',
+    name: 'Roberta Silva',
+    rating: 5.0,
+    reviewCount: 71,
+    distance: '2.1 km',
+    distanceValue: 2.1,
+    profileImage: '/professionals/roberta.jpg',
+    specialties: ['Esmaltação', 'Spa das mãos'],
+    isOnline: true,
+    responseTime: 'Responde em ~6 min',
+    completedServices: 189,
+    bio: 'Especialista em cuidados com unhas e tratamentos para mãos.',
+    availableServices: ['esmaltacao'],
+  },
+  {
+    id: 'prof-7',
+    name: 'Beatriz Mendes',
+    rating: 4.8,
+    reviewCount: 95,
+    distance: '2.3 km',
+    distanceValue: 2.3,
+    profileImage: '/professionals/beatriz.jpg',
+    specialties: ['Escova', 'Maquiagem'],
+    isOnline: false,
+    responseTime: 'Offline',
+    completedServices: 234,
+    bio: 'Profissional versátil com expertise em cabelo e maquiagem.',
+    availableServices: ['escova', 'maquiagem'],
+  },
+  {
+    id: 'prof-8',
+    name: 'Carolina Rocha',
+    rating: 4.9,
+    reviewCount: 103,
+    distance: '2.7 km',
+    distanceValue: 2.7,
+    profileImage: '/professionals/carolina.jpg',
+    specialties: ['Maquiagem', 'Automaquiagem'],
+    isOnline: true,
+    responseTime: 'Responde em ~12 min',
+    completedServices: 276,
+    bio: 'Maquiadora e instrutora de automaquiagem.',
+    availableServices: ['maquiagem'],
+  },
+];
 
 // Company information
 export const companyInfo = {
